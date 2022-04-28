@@ -40,15 +40,20 @@ class Thread_Implement implements Runnable {
 
 
 class Thread_Count1 implements Runnable {
+    private int ID;
     private List<String> list;
-    public Thread_Count1(List<String> lt) {
+    public Thread_Count1(List<String> lt, int id) {
+        this.ID = id;
         this.list = lt;
     }
     public void run() {
         try {
             for (int i = 0; i < 9; i++) {
+                if (i == 3) {
+                  Thread.yield();// let other do firt ... seem to be not working @@
+                }
                 Thread.sleep(10);
-                list.add("a" + i);
+                list.add("" + ID + i);
             }
         }catch(Exception e) {
             throw new RuntimeException(e);
@@ -90,9 +95,9 @@ public class Java_Thread {
     // synchronized & join
     // 1
     List<String> list1 = Collections.synchronizedList(new ArrayList<String>());
-    Thread thd11 = new Thread(new Thread_Count1(list1));
-    Thread thd12 = new Thread(new Thread_Count1(list1));
-    Thread thd13 = new Thread(new Thread_Count1(list1));
+    Thread thd11 = new Thread(new Thread_Count1(list1, 1));
+    Thread thd12 = new Thread(new Thread_Count1(list1, 2));
+    Thread thd13 = new Thread(new Thread_Count1(list1, 3));
     thd11.start();
     thd12.start();
     thd13.start();
