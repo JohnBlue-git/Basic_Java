@@ -1,5 +1,9 @@
 /*
-
+Auther: John Blue
+Time: 2022/4
+Platform: ATOM with atom-ide-ui, ide-java, and script
+SDK: java SE 8 SDK
+Object: basic operation of thread in Java
 */
 
 import java.util.Collections;
