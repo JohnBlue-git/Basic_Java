@@ -22,23 +22,23 @@ public class Practice {
       return n + sum(n - 1);
     }
 
-    public static int gcd_rec(int x, int y) {
+        public static int gcd_rec(int x, int y) {
         // if x < y then exchange x y
-        if (x % y == 0) {
-            return y;
+        if (y == 0) {
+            return x;
         }
         return gcd_rec(y, x % y);
     }
 
     public static int gcd(int x, int y) {
-        int tmp;
+        int xt;
         // if x < y then exchange x y
-        while (x % y != 0) {
-            tmp = y;
-            y = x % y;
-            x = tmp;
+        while (y != 0) {
+            xt = x;
+            x = y;
+            y = xt % y;
         }
-        return y;
+        return x;
     }
 
     public static void main(String[] argv) {
